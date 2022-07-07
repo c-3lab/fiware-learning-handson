@@ -1,0 +1,6 @@
+{
+    // Quick Open で開いたエディターをプレビューとして表示するかどうかを制御します。
+    "workbench.editor.enablePreviewFromQuickOpen": true,
+    // 前のセッションからエディターが復元されていない場合に、起動時に表示するかどうかを制御します。
+    "workbench.startupEditor": "readme",
+}
