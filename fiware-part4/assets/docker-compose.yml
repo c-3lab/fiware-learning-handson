@@ -1,0 +1,64 @@
+version: "3"
+services:
+
+  # Orion is the context broker
+  orion:
+    image: fiware/orion
+    hostname: orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo-db -logLevel DEBUG -noCache
+
+  # Cygnus is configured to write context data to PostgeSQL
+  cygnus:
+    image: fiware/cygnus-ngsi
+    hostname: cygnus
+    container_name: fiware-cygnus
+    networks:
+      - default
+    depends_on:
+      - postgres-db
+    ports:
+      - "5055:5055"
+      - "5080:5080"
+    environment:
+      - "CYGNUS_POSTGRESQL_HOST=postgres-db" # Hostname of the PostgreSQL server used to persist historical context data
+      - "CYGNUS_POSTGRESQL_PORT=5432" # Port that the PostgreSQL server uses to listen to commands
+      - "CYGNUS_POSTGRESQL_USER=postgres" # Username for the PostgreSQL database user
+      - "CYGNUS_POSTGRESQL_PASS=password" # Password for the PostgreSQL database user
+      - "CYGNUS_POSTGRESQL_ENABLE_CACHE=true" # Switch to enable caching within the PostgreSQL configuration
+      - "CYGNUS_POSTGRESQL_SERVICE_PORT=5055" # The port the agent.conf is configured for
+      - "CYGNUS_LOG_LEVEL=DEBUG" # The logging level for Cygnus
+      - "CYGNUS_SERVICE_PORT=5055" # Notification Port that Cygnus listens to for Postgres subscriptions
+      - "CYGNUS_API_PORT=5080" # Port that Cygnus listens on for operational reasons
+
+  # Databases - Orion uses Mongo-DB, Cygnus is persisting to Postgres
+  mongo-db:
+    image: mongo:3.6
+    hostname: mongo-db
+    container_name: db-mongo
+    ports:
+      - "27017:27017"
+    command: --bind_ip_all --smallfiles
+    volumes:
+      - mongo-db:/data
+
+  postgres-db:
+    image: postgres
+    hostname: postgres-db
+    container_name: db-postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_PASSWORD=password"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_DB=postgres"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  mongo-db: ~
+  postgres-db: ~
