@@ -1,0 +1,27 @@
+version: "3"
+services:
+
+  # Orion is the context broker
+  orion:
+    image: fiware/orion
+    hostname: orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo-db -logLevel DEBUG -noCache
+
+  # Databases - Orion uses Mongo-DB, Cygnus is persisting to Postgres
+  mongo-db:
+    image: mongo:3.6
+    hostname: mongo-db
+    container_name: db-mongo
+    ports:
+      - "27017:27017"
+    command: --bind_ip_all --smallfiles
+    volumes:
+      - mongo-db:/data
+
+volumes:
+  mongo-db: ~
