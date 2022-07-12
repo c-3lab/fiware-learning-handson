@@ -2,6 +2,10 @@
 
 このコンテンツの概要説明
 
+## 始めに
+GitHub codespacesを起動後、README.mdをクリックして手順を確認してください。
+![](assets/1-1.png)
+
 ## PART1
 
 FIWAREの数あるコンポーネントの中でも重要な役割を担っている[FIWARE Orion](https://fiware-orion.readthedocs.io/en/master/)の起動方法を学習します。
