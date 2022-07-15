@@ -103,6 +103,11 @@ pressureの値を変更してみます。
 
 ![subscriptionId](./assets/3-7.png)
 
+次のstepでsubscriptionの更新を行うので環境変数にsubscriptionのidを設定しておきます。  
+以下のコマンドの = 以降に先ほど取得したsubscription idをコピー&ペーストして実行します。  
+
+`SUBSCRIPTION_ID=`
+
 このidを使用し **/v2/subscriptions/{id}** のように指定することで、PATCHで更新、DELETEで削除を行うことができます。
 
 [STEP2へ](step2.md)
