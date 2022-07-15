@@ -31,7 +31,7 @@ curl -v -X PATCH localhost:1026/v2/subscriptions/${SUBSCRIPTION_ID} -s -S -H 'Co
   },
   "notification": {
     "http": {
-      "url": "https://accumulator:1028/accumulate"
+      "url": "http://accumulator:1028/accumulate"
     },
     "attrs": [
       "pressure"
