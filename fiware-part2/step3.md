@@ -28,7 +28,7 @@ keyValuesオプションを使うことでattributeを属性値だけ取得す�
 
 attrsを指定することで取得するattributeの指定と順序を指定することができます。
 
-`curl localhost:1026/v2/entities/Room1?options=values&attrs=temperature,pressure | jq`
+`curl 'localhost:1026/v2/entities/Room1?options=values&attrs=temperature,pressure' | jq`
 
 # 3-5 attributeの取得
 
