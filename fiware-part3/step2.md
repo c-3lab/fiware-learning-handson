@@ -31,7 +31,7 @@ curl -v -X PATCH localhost:1026/v2/subscriptions/${SUBSCRIPTION_ID} -s -S -H 'Co
   },
   "notification": {
     "http": {
-      "url": "https://[[HOST_SUBDOMAIN]]-1028-[[KATACODA_HOST]].environments.katacoda.com/accumulate"
+      "url": "https://accumulator:1028/accumulate"
     },
     "attrs": [
       "pressure"
@@ -43,7 +43,7 @@ EOF
 
 pressureの値を変更してみます。
 
-`curl localhost:1026/v2/entities/Room1/attrs/pressure/value -s -S -H 'Content-Type: text/plain' -X PUT -d 730`{{copy}}
+`curl localhost:1026/v2/entities/Room1/attrs/pressure/value -s -S -H 'Content-Type: text/plain' -X PUT -d 730`
 
 **Terminal2**を開きログを確認してみます。
 先ほどと同じように通知された結果が確認できます。

@@ -6,10 +6,14 @@ Part3ではFIWARE OrionのSubscription機能について学習していきます
 
 # 1-1 FIWARE OrionとMongoDBの起動確認
 
-今回は以下の構成が自動起動されます。  
+今回は以下の構成を起動します。  
 ※起動の詳細に関してはの[Part1](../fiware-part1/step1.md)または[Part2](../fiware-part2/step1.md)を参照
 
 ![全体構成図](./assets/3-8.png)
+
+以下のコマンドを実行します。
+
+`./fiware-part3/setup.sh `
 
 ターミナルの処理が終了したら以下のコマンドで動作確認します。
 
@@ -34,15 +38,13 @@ Subscriptionの設定をする前に通知先の[FIWAREが公開しているサ�
 
 サンプルアプリを動作させるため、新しいTerminalを開きます。
 
-![OpenMenu](./assets/3-1.png)
-
-Open New Terminalを押します。
-
-![OpenTerminal](./assets/3-2.png)
+![OpenTerminal](./assets/3-9.png)
 
 **Terminal2**で以下のコマンドを実行し[FIWAREが公開しているサンプルアプリ](https://github.com/telefonicaid/fiware-orion/blob/master/scripts/accumulator-server.py)を起動します。
 
-`./fiware-part3/assets/accumulator-server.py --port 1028 --url /accumulate --pretty-print -v`
+`docker exec -it accumulator bash`
+
+`./accumulator-server.py --port 1028 --url /accumulate --pretty-print -v`
 
 これはhttpでアクセスしてきた情報をログとして表示するサーバです。  
 このアプリを使ってOrionからの通知の内容を確認していきます。
@@ -71,7 +73,7 @@ curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json
   },
   "notification": {
     "http": {
-      "url": "http://[[HOST_SUBDOMAIN]]-1028-[[KATACODA_HOST]].environments.katacoda.com/accumulate"
+      "url": "http://accumulator:1028/accumulate"
     },
     "attrs": [
       "pressure"
