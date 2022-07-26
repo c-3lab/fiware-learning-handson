@@ -1,0 +1,46 @@
+version: "3"
+
+services:
+  orionA:
+    image: fiware/orion
+    hostname: orionA
+    container_name: fiware-orionA
+    depends_on:
+      - mongo-dbA
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo-dbA -logLevel DEBUG -noCache -port 1026
+
+  orionB:
+    image: fiware/orion
+    hostname: orionB
+    container_name: fiware-orionB
+    depends_on:
+      - mongo-dbB
+    ports:
+      - "1027:1027"
+    command: -dbhost mongo-dbB -logLevel DEBUG -noCache -port 1027
+
+  mongo-dbA:
+    image: mongo:4.4
+    hostname: mongo-dbA
+    container_name: mongo-dbA
+    ports:
+      - "27017:27017"
+    command: --nojournal
+    volumes:
+      - mongo-dbA:/data
+
+  mongo-dbB:
+    image: mongo:4.4
+    hostname: mongo-dbB
+    container_name: mongo-dbB
+    ports:
+      - "27018:27018"
+    command: --nojournal
+    volumes:
+      - mongo-dbB:/data
+
+volumes:
+  mongo-dbA:
+  mongo-dbB:

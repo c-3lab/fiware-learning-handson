@@ -1,0 +1,9 @@
+{
+  "id": "Room1",
+  "type": "Room",
+  "pressure": {
+     "value": 711,
+     "type": "Integer",
+     "metadata": {}
+  }
+}

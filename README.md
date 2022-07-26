@@ -35,3 +35,9 @@ FIWARE Cygnusによる履歴データの作成について学習していきま�
 Fiware-ServiceとFiware-ServicePathについて学習していきます。
 
 [PART5へ](fiware-part5/README.md)
+
+## PART6
+
+FIWARE OrionのRegistration機能について学習していきます。
+
+[PART6へ](fiware-part6/README.md)
