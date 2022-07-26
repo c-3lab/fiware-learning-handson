@@ -37,7 +37,7 @@ Orionでは"Fiware-Service"というHTTPヘッダーでテナント名を設定�
 
 以下のコマンドで**tenant_a**にRoom1 Entityを登録します。
 
-`curl localhost:1026/v2/entities -s -S -H 'Fiware-Service: tenant_a' -H 'Content-Type: application/json' -d @fiware-part5/assets/example-ngsi-room1.json`
+`curl localhost:1026/v2/entities -s -S -H 'Fiware-Service: tenant_a' -H 'Content-Type: application/json' -X POST -d @fiware-part5/assets/example-ngsi-room1.json`
 
 
 以下のコマンドでEntity一覧を取得します。
@@ -68,7 +68,7 @@ Fiware-Serviceのマルチテナンシーとは別にFiware-ServicePathによっ
 
 Orionでは"Fiware-ServicePath"というHTTPヘッダーでテナント名を設定することができます。
 
-`curl localhost:1026/v2/entities -s -S -H 'Fiware-ServicePath: /tokyo/shinjuku/office' -H 'Content-Type: application/json' -d @fiware-part5/assets/example-ngsi-room1.json`
+`curl localhost:1026/v2/entities -s -S -H 'Fiware-ServicePath: /tokyo/shinjuku/office' -H 'Content-Type: application/json' -X POST -d @fiware-part5/assets/example-ngsi-room1.json`
 
 以下のコマンドでEntity一覧を取得します。  
 デフォルトのスコープ(/)では全てのスコープが取得されます。

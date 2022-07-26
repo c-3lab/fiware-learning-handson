@@ -33,7 +33,7 @@ Entityを登録する際はHTTPで **/v2/entities**というエンドポイン�
 
 1. Room1を登録します。
 
-   `curl localhost:1026/v2/entities -s -S -H 'Content-Type: application/json' -d @fiware-part2/assets/example-ngsi-room1.json`
+   `curl localhost:1026/v2/entities -s -S -H 'Content-Type: application/json' -X POST -d @fiware-part2/assets/example-ngsi-room1.json`
 
 2. 先ほど投入したEntityを確認します。
 
@@ -108,7 +108,7 @@ Entityのidやtypeを変更する必要がない場合はattributeのみの更�
 
 1. Room2を登録します。
 
-   `curl localhost:1026/v2/entities -s -S -H 'Content-Type: application/json' -d @fiware-part2/assets/example-ngsi-room2.json`
+   `curl localhost:1026/v2/entities -s -S -H 'Content-Type: application/json' -X POST -d @fiware-part2/assets/example-ngsi-room2.json`
 
 2. Room2 Entityが追加されていることを確認します。
 

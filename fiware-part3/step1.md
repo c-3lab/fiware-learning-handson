@@ -57,7 +57,7 @@ Subscriptionの設定をする前に通知先の[FIWAREが公開しているサ�
 
 
 ```json
-curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -d @- <<EOF
+curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -X POST -d @- <<EOF
 {
   "description": "A subscription to get info about Room1",
   "subject": {

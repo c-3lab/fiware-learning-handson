@@ -39,7 +39,7 @@ Cygnusに履歴データを作成する方法はOrionからのSubscriptionによ
 **/notify**はOrionからのSubscription通知を受けて履歴ビューを作成してくれるエンドポイントになります。
 
 ```json
-curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -d @- <<EOF
+curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -X POST -d @- <<EOF
 {
   "description": "A subscription to get info about Room",
   "subject": {
