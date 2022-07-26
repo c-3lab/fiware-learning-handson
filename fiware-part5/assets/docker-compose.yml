@@ -14,14 +14,14 @@ services:
 
   # Databases - Orion uses Mongo-DB, Cygnus is persisting to Postgres
   mongo-db:
-    image: mongo:3.6
+    image: mongo:4.4
     hostname: mongo-db
-    container_name: db-mongo
+    container_name: mongo-db
     ports:
       - "27017:27017"
-    command: --bind_ip_all --smallfiles
+    command: --nojournal
     volumes:
       - mongo-db:/data
 
 volumes:
-  mongo-db: ~
+  mongo-db:
