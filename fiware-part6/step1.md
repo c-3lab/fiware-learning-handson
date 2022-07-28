@@ -50,7 +50,22 @@ curl localhost:1027/v2/entities -s -S -H 'Content-Type: application/json' -X POS
 curl localhost:1027/v2/entities | jq
 ```
 
-# 1-2 FIWARE OrionのRegistration機能
+# 1-2 Registrationの通信の流れ
+
+RegistrationをOrionAに設定し、Registrationの対象にしたEntityへクエリを実行した際に、OrionBへクエリが転送される流れは、以下の図の通りとなります。
+
+![通信の流れ](./assets/6-6.png)
+
+**/v2/registration**  
+OrionAに対して、Registrationの設定を行います。
+
+**/v2/entities**  
+OrionAに対して、クエリを実行します。
+
+**/v2/op/query**  
+OrionAからOrionBにクエリが転送されます。
+
+# 1-3 FIWARE OrionのRegistration機能
 
 FIWARE Orionにはクエリ/更新要求を転送する機能があります。転送の設定を行うことで、FIWARE Orionから別のシステム（別のNGSIに対応したシステム）で提供されるコンテキストデータを取得することができます。
 
@@ -69,7 +84,7 @@ POSTする際のbodyは以下の通りです。
 この例では**OrionA**が**Room1**の**pressure**に対するクエリ/更新要求を受け付けた際に、
 **OrionB**にクエリ/更新要求を転送する設定です。
 
-# 1-3 Registrationの設定前の確認
+# 1-4 Registrationの設定前の確認
 
 OrionAに対して、以下のコマンドを実行し、データが取得できないことを確認します。
 
@@ -77,7 +92,7 @@ OrionAに対して、以下のコマンドを実行し、データが取得で�
 curl localhost:1026/v2/entities/Room1/attrs/pressure?type=Room -s -S -H 'Accept: application/json' | jq
 ```
 
-# 1-4 Registrationの設定
+# 1-5 Registrationの設定
 
 以下のコマンドでOrionAに対して、Registrationの設定を行います。
 
@@ -105,7 +120,7 @@ curl localhost:1026/v2/registrations -s -S -H 'Content-Type: application/json' -
 EOF
 ```
 
-# 1-5 OrionAからOrionBへの転送
+# 1-6 OrionAからOrionBへの転送
 
 Registrationの設定完了後に、OrionAに対して、以下のコマンドを再度実行します。
 
