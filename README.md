@@ -41,3 +41,9 @@ Fiware-ServiceとFiware-ServicePathについて学習していきます。
 FIWARE OrionのRegistration機能について学習していきます。
 
 [PART6へ](fiware-part6/README.md)
+
+## PART7
+
+FIWARE Orionのログ設定について学習していきます。
+
+[PART7へ](fiware-part7/README.md)
