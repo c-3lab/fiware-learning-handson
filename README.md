@@ -47,3 +47,9 @@ FIWARE OrionのRegistration機能について学習していきます。
 FIWARE Orionのログ設定について学習していきます。
 
 [PART7へ](fiware-part7/README.md)
+
+## PART9
+
+FIWAREコンポーネントのアクセス保護について学習していきます。
+
+[PART9へ](fiware-part9/README.md)
