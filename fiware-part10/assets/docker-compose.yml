@@ -1,0 +1,101 @@
+version: "3"
+
+services:
+  orion:
+    image: fiware/orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    ports:
+      - "1026:1026"
+    command: -dbhost mongo-db
+
+  mongo-db:
+    image: mongo:4.4
+    hostname: mongo-db
+    container_name: mongo-db
+    ports:
+      - "27017:27017"
+    command: --nojournal
+    volumes:
+      - mongo-db:/data
+
+  postgres-db:
+    image: postgres
+    hostname: postgres-db
+    container_name: postgres-db
+    ports:
+      - "5432:5432"
+    environment:
+      - "POSTGRES_PASSWORD=password"
+      - "POSTGRES_USER=postgres"
+      - "POSTGRES_DB=postgres"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+  elasticsearch:
+    restart: always
+    image: elasticsearch:2.4
+    container_name: elasticsearch
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    command: elasticsearch -Des.index.max_result_window=50000
+
+  memcached:
+    restart: always
+    image: memcached:1
+    container_name: memcached
+    command: memcached -m 2048m
+
+  wirecloud:
+    restart: always
+    image: fiware/wirecloud
+    container_name: fiware-wirecloud
+    ports:
+      - "8000:8000"
+    depends_on:
+      - elasticsearch
+      - memcached
+      - postgres-db
+    environment:
+      - DEBUG=False
+      - DEFAULT_THEME=wirecloud.defaulttheme
+      - DB_HOST=postgres-db
+      - DB_PASSWORD=password
+      - FORWARDED_ALLOW_IPS=*
+      - ELASTICSEARCH2_URL=http://elasticsearch:9200/
+      - MEMCACHED_LOCATION=memcached:11211
+    volumes:
+      - wirecloud-data:/opt/wirecloud_instance/data
+      - wirecloud-static:/var/www/static
+
+  ngsi-proxy:
+    image: fiware/ngsiproxy:1.2.0
+    hostname: ngsi-proxy
+    container_name: ngsi-proxy
+    expose:
+      - "8100"
+    ports:
+      - "8100:8100"
+    environment:
+      - PORT=8100
+      - TRUST_PROXY_HEADERS=0
+
+  nginx:
+    image: nginx
+    hostname: nginx
+    container_name: nginx
+    ports:
+      - 80:80
+    depends_on:
+      - wirecloud
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - wirecloud-static:/usr/share/nginx/html/static
+
+volumes:
+  mongo-db:
+  postgres-db:
+  wirecloud-static:
+  wirecloud-data:
+  elasticsearch-data:

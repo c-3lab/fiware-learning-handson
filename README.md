@@ -62,6 +62,12 @@ FIWAREコンポーネントのアクセス保護について学習していき�
 
 [PART9へ](fiware-part9/README.md)
 
+## PART10
+
+FIWARE Wirecloudを利用したデータの可視化について学習していきます。
+
+[PART10へ](fiware-part10/README.md)
+
 ## 学習中にGitHub Codespaces環境から切断された場合
 
 タイムアウト時に学習中に起動したDockerコンテナが自動終了してしまうため、[setup.md](setup.md)に記載されている手順を実施後、学習を再開してください。
