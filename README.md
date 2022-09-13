@@ -1,6 +1,8 @@
 # FIWARE学習コンテンツ
 
-このコンテンツの概要説明
+## 概要
+
+シビックハッカーがFIWAREコンポーネントの機能を、ハンズオン形式で学習していくためのコンテンツです。
 
 ## 始めに
 GitHub codespacesを起動後、README.mdをクリックして手順を確認してください。
@@ -47,3 +49,7 @@ FIWARE OrionのRegistration機能について学習していきます。
 FIWARE Orionのログ設定について学習していきます。
 
 [PART7へ](fiware-part7/README.md)
+
+## 学習中にGitHub Codespaces環境から切断された場合
+
+タイムアウト時に学習中に起動したDockerコンテナが自動終了してしまうため、[setup.md](setup.md)に記載されている手順を実施後、学習を再開してください。
