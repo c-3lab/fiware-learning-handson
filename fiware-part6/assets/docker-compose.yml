@@ -9,7 +9,7 @@ services:
       - mongo-dbA
     ports:
       - "1026:1026"
-    command: -dbhost mongo-dbA -logLevel DEBUG -noCache -port 1026
+    entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -ngsiv1Autocast -disableFileLog -dbhost mongo-dbA -logLevel DEBUG -noCache -port 1026"]
 
   orionB:
     image: fiware/orion
@@ -19,7 +19,7 @@ services:
       - mongo-dbB
     ports:
       - "1027:1027"
-    command: -dbhost mongo-dbB -logLevel DEBUG -noCache -port 1027
+    entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -ngsiv1Autocast -disableFileLog -dbhost mongo-dbB -logLevel DEBUG -noCache -port 1027"]
 
   mongo-dbA:
     image: mongo:4.4

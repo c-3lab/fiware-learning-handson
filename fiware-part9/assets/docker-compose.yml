@@ -12,7 +12,7 @@ services:
         ipv4_address: 172.18.1.2
     expose:
       - "1026"
-    command: -dbhost mongo-db -logLevel DEBUG -noCache
+    entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -ngsiv1Autocast -disableFileLog -dbhost mongo-db -logLevel DEBUG -noCache"]
    
   mongo-db:
     image: mongo:4.4
