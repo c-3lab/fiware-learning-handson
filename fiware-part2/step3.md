@@ -63,6 +63,6 @@ qオプションにより、クエリ言語によるフィルタリングを行�
 
 `curl 'localhost:1026/v2/entities?q=temperature>22' | jq`
 
-[FIWARE NGSI v2 Specification](http://telefonicaid.github.io/fiware-orion/api/v2/stable/)の**SimpleQueryLanguage**の項目に様々な指定方法が書かれています。
+公式の[Simple Query Language](https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/orion-api.md#simple-query-language)に様々な指定方法が記載されています。
 
 [STEP4へ](step4.md)
