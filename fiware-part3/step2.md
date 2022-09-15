@@ -1,27 +1,39 @@
 [STEP1へ](step1.md)
 
-Orion Subscriptionにおける様々な設定に関して学習していきます。
+# 2-1 通知先のサンプルアプリを起動
+
+Subscriptionの設定をする前に通知先の[FIWAREが公開しているサンプルアプリ](https://github.com/telefonicaid/fiware-orion/blob/master/scripts/accumulator-server.py)を起動します。
+
+![Accumulate](./assets/3-4.png)
+
+サンプルアプリを動作させるため、新しいTerminalを開きます。
+
+![OpenTerminal](./assets/3-9.png)
+
+**Terminal2**で以下のコマンドを実行し[FIWAREが公開しているサンプルアプリ](https://github.com/telefonicaid/fiware-orion/blob/master/scripts/accumulator-server.py)を起動します。
+
+`docker exec -it accumulator bash`
+
+`./accumulator-server.py --port 1028 --url /accumulate --pretty-print -v`
+
+これはhttpでアクセスしてきた情報をログとして表示するサーバです。  
+このアプリを使ってOrionからの通知の内容を確認していきます。
 
 
-# 2-1 idPatternによる検知対象の指定
+# 2-2 Subscriptionの設定
 
-変更を検知するEntityの指定方法にidPatternを使うことができます。  
-idPatternは正規表現を使用しマッチしたEntityを対象とすることができます。
+**元のTerminal**に戻ります。  
+以下のコマンドでSubscriptionの設定を行います。
 
-![idPattern](./assets/3-6.png)
-
-今回の例では`".*"`を指定することで全てのidを対象にしています。
-
-元のTerminalで以下のコマンドを実行します。
 
 ```json
-curl -v -X PATCH localhost:1026/v2/subscriptions/${SUBSCRIPTION_ID} -s -S -H 'Content-Type: application/json' -d @- <<EOF
+curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -X POST -d @- <<EOF
 {
-  "description": "A subscription to get info about Room",
+  "description": "A subscription to get info about Room1",
   "subject": {
     "entities": [
       {
-        "idPattern": ".*",
+        "id": "Room1",
         "type": "Room"
       }
     ],
@@ -41,27 +53,33 @@ curl -v -X PATCH localhost:1026/v2/subscriptions/${SUBSCRIPTION_ID} -s -S -H 'Co
 EOF
 ```
 
+
 pressureの値を変更してみます。
 
-`curl localhost:1026/v2/entities/Room1/attrs/pressure/value -s -S -H 'Content-Type: text/plain' -X PUT -d 730`
+`curl localhost:1026/v2/entities/Room1/attrs/pressure/value -s -S -H 'Content-Type: text/plain' -X PUT -d 720`
 
-**Terminal2**を開きログを確認してみます。
-先ほどと同じように通知された結果が確認できます。
+**Terminal2**を開きログを確認してみます。  
+通知された結果が以下のように出力されています。
 
-他にも様々な条件や設定で通知を行うことができます。詳細は公式の[Subscriptions Operations](https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/orion-api.md#subscriptions-operations)に記載されています。
+![Result](./assets/3-5.png)
 
-# 2-2 コンテナの停止・削除
+# 2-3 Subscirptionの確認
 
-起動したコンテナを停止・削除します。
+`/v2/subscriptions`に対してGETすることでsubscirptionの一覧を取得できます。
 
-1. 以下コマンドでコンテナを停止・削除します。
+`curl localhost:1026/v2/subscriptions | jq`
 
-   `docker-compose -f fiware-part3/assets/docker-compose.yml down`
+先ほど作成したsubscriptionにidが作成されていることが確認できます。
 
-2. 完了したら以下のコマンドでコンテナが停止・削除されていることを確認します。
+![subscriptionId](./assets/3-7.png)
 
-   `docker ps -a`
+次のstepでsubscriptionの更新を行うので環境変数にsubscriptionのidを設定しておきます。  
+以下のコマンドの = 以降に先ほど取得したsubscription idをコピー&ペーストして実行します。  
 
-   一覧に何も表示されていなければ成功です。
+```
+SUBSCRIPTION_ID=取得したsubscription id
+```
 
-[終了](finish.md)
+このidを使用し`/v2/subscriptions/{id}`のように指定することで、PATCHで更新、DELETEで削除を行うことができます。
+
+[STEP3へ](step3.md)
