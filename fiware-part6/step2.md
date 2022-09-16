@@ -81,7 +81,7 @@ curl localhost:1026/v2/entities/Room1/attrs/pressure?type=Room -s -S -H 'Accept:
 
 ![ResponseBody](./assets/6-4.png)
 
-Registrationsに関する情報は公式の[ngsiv2_implementation_note](https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/user/ngsiv2_implementation_notes.md#registrations)に記載されています。
+Registrationsに関する情報は公式の[Registration Operations](https://github.com/telefonicaid/fiware-orion/blob/master/doc/manuals/orion-api.md#registration-operations)に記載されています。
 
 # 2-6 コンテナの停止・削除
 
