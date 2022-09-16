@@ -1,0 +1,118 @@
+version: "3.5"
+
+services:
+  orion:
+    image: fiware/orion
+    hostname: orion
+    container_name: fiware-orion
+    depends_on:
+      - mongo-db
+    networks:
+      default:
+        ipv4_address: 172.18.1.2
+    expose:
+      - "1026"
+    command: -dbhost mongo-db -logLevel DEBUG -noCache
+   
+  mongo-db:
+    image: mongo:4.4
+    hostname: mongo-db
+    container_name: db-mongo
+    networks:
+      default:
+        ipv4_address: 172.18.1.3
+    ports:
+      - "27017:27017"
+    command: --nojournal
+    volumes:
+      - mongo-db:/data
+
+  keyrock:
+    image: fiware/idm
+    container_name: fiware-keyrock
+    hostname: keyrock
+    depends_on:
+      - mysql-db
+    networks:
+      default:
+        ipv4_address: 172.18.1.5
+    ports:
+      - "3005:3005"
+      - "3443:3443"
+    environment:
+      - IDM_DB_HOST=mysql-db
+      - IDM_DB_PASS_FILE=/run/secrets/my_secret_data
+      - IDM_DB_USER=root
+      - IDM_HOST=http://localhost:3005
+      - IDM_PORT=3005
+      - IDM_ADMIN_USER=alice
+      - IDM_ADMIN_EMAIL=alice-the-admin@test.com
+      - IDM_ADMIN_PASS=test
+    secrets:
+      - my_secret_data 
+  
+  mysql-db:
+    image: mysql:5.7
+    hostname: mysql-db
+    container_name: db-mysql
+    expose:
+      - "3306"
+    ports:
+      - "3306:3306"
+    networks:
+      default:
+        ipv4_address: 172.18.1.6 
+    environment:
+      - "MYSQL_ROOT_PASSWORD_FILE=/run/secrets/my_secret_data"
+      - "MYSQL_ROOT_USER=root"
+      - "MYSQL_ROOT_HOST=172.18.1.5"
+    volumes:
+      - mysql-db:/var/lib/mysql
+      - ./mysql-data:/docker-entrypoint-initdb.d/
+    secrets:
+      - my_secret_data
+
+  orion-proxy:
+    image: fiware/pep-proxy
+    container_name: fiware-orion-proxy
+    hostname: orion-proxy
+    networks:
+      default:
+        ipv4_address: 172.18.1.10
+    depends_on:
+      - keyrock
+    ports:
+      - "1027:1027"
+    expose:
+      - "1027"
+    environment:
+      - DEBUG=pep-proxy:*
+      - PEP_PROXY_DEBUG=true
+      - PEP_PROXY_APP_HOST=orion
+      - PEP_PROXY_APP_PORT=1026
+      - PEP_PROXY_PORT=1027
+      - PEP_PROXY_IDM_HOST=keyrock
+      - PEP_PROXY_HTTPS_ENABLED=false
+      - PEP_PROXY_AUTH_ENABLED=false
+      - PEP_PROXY_IDM_SSL_ENABLED=false
+      - PEP_PROXY_IDM_PORT=3005
+      - PEP_PROXY_APP_ID=tutorial-dckr-site-0000-xpresswebapp
+      - PEP_PROXY_USERNAME=pep_proxy_00000000-0000-0000-0000-000000000000
+      - PEP_PASSWORD=test
+      - PEP_PROXY_PDP=idm
+      - PEP_PROXY_MAGIC_KEY=1234
+      - PEP_PROXY_PUBLIC_PATHS=/version
+
+volumes:
+  mongo-db:
+  mysql-db:
+
+networks:
+  default:
+    ipam:
+      config:
+        - subnet: 172.18.1.0/24
+
+secrets:
+  my_secret_data:
+    file: ./secrets.txt 
