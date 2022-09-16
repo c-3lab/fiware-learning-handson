@@ -48,6 +48,12 @@ FIWARE Orionのログ設定について学習していきます。
 
 [PART7へ](fiware-part7/README.md)
 
+## PART8
+
+IoTAgentを使ったデバイスからのデータ収集について学習していきます。
+
+[PART8へ](fiware-part8/README.md)
+
 ## PART9
 
 FIWAREコンポーネントのアクセス保護について学習していきます。
