@@ -22,7 +22,7 @@ docker-compose -f fiware-part8/assets/docker-compose.yml up -d
 docker ps
 ```
 
-一覧にfiware-orion, db-mongo, fiware-iot-agent, dummy-deviceがあれば成功です。
+一覧に**fiware-orion**, **db-mongo**, **fiware-iot-agent**, **dummy-device**があれば成功です。
 
 # 1-3 FIWARE IoTAgentの機能
 
@@ -337,7 +337,7 @@ curl -X GET 'http://localhost:1026/v2/entities/urn:ngsi-ld:Lamp:004/attrs?attrs=
 
 # 1-11 コンテナの停止・削除
 
-起動したmongodbとorionのコンテナを停止・削除します。
+起動したコンテナを停止・削除します。
 
 1. 以下コマンドでコンテナを停止・削除します。
 

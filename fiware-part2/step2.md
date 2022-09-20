@@ -29,7 +29,7 @@ Orionではコンテキスト情報(例では温度、気圧など)を含めた�
 # 2-2 Entityの登録
 
 以下のコマンドで先ほどのEntityをOrionに登録して見ましょう。  
-Entityを登録する際はHTTPで **/v2/entities**というエンドポイントに対してPOSTをおこないます。
+Entityを登録する際はHTTPで`/v2/entities`というエンドポイントに対してPOSTをおこないます。
 
 1. Room1を登録します。
 
@@ -43,7 +43,7 @@ Entityを登録する際はHTTPで **/v2/entities**というエンドポイン�
 # 2-3 Entity attributeを更新
 
 Entityのidやtypeを変更する必要がない場合はattributeのみの更新を行えます。  
-**/v2/entities/{id}/attrs**に対してPOSTを行うことで複数のattributeを更新できます。
+`/v2/entities/{id}/attrs`に対してPOSTを行うことで複数のattributeを更新できます。
 
 1. Room1のattributeを更新します。
    ```
@@ -67,7 +67,7 @@ Entityのidやtypeを変更する必要がない場合はattributeのみの更�
 
 # 2-4 attributeのvalueのみの更新
 
-**/v2/entities/{id}/attrs/{attrName}/value**に対してPUTを行うことで値のみを指定して更新できます。  
+`/v2/entities/{id}/attrs/{attrName}/value`に対してPUTを行うことで値のみを指定して更新できます。  
 ここではContent-typeがtext/plainとなる点を注意します。
 
 
@@ -82,7 +82,7 @@ Entityのidやtypeを変更する必要がない場合はattributeのみの更�
 
 # 2-5 Entityの追加
 
-現在登録されているEntity idとは異なるidを **/v2/entities**に対してPOSTした場合は別のEntityとして登録されます。
+現在登録されているEntity idとは異なるidを`/v2/entities`に対してPOSTした場合は別のEntityとして登録されます。
 
 
 以下のコマンドで追加するRoom2のEntityを確認します。

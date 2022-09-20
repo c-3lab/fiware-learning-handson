@@ -12,7 +12,7 @@ Part9ではFIWAREコンポーネントのアクセス保護について学習し
 
 ![Wilmaの概要](./assets/9-2.png)
 
-# 1-3 KeyrockとWilmaの起動確認
+# 1-3 構成の起動
 
 今回は以下の構成を起動します。
 
@@ -30,7 +30,7 @@ docker-compose -f fiware-part9/assets/docker-compose.yml up -d
 docker ps
 ```
 
-一覧にfiware-orion-proxy, fiware-orion, fiware-keyrock, db-mongo, db-mysqlがあれば成功です。
+一覧に**fiware-orion-proxy**, **fiware-orion**, **fiware-keyrock**, **db-mongo**, **db-mysql**があれば成功です。
 
 # 1-4 KeyrockとWilmaの設定
 
@@ -110,13 +110,13 @@ curl -X GET \
 # 1-6 コンテナの停止・削除
 起動したコンテナを停止・削除します。
 
-以下コマンドでコンテナを停止・削除します。
+1. 以下コマンドでコンテナを停止・削除します。
 
-`docker-compose -f fiware-part9/assets/docker-compose.yml down`
+   `docker-compose -f fiware-part9/assets/docker-compose.yml down`
 
-完了したら以下のコマンドでコンテナが停止・削除されていることを確認します。
+2. 完了したら以下のコマンドでコンテナが停止・削除されていることを確認します。
 
-`docker ps -a`
+   `docker ps -a`
 
 一覧に何も表示されていなければ成功です。
 

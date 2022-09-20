@@ -1,6 +1,6 @@
 Part5ではFiware-ServiceとFiware-ServicePathについて学習します。
 
-# 1-1 環境の起動
+# 1-1 構成の起動
 
 今回は以下の構成を起動します。
 
@@ -89,7 +89,7 @@ Orionでは"Fiware-ServicePath"というHTTPヘッダーでテナント名を設
 また、Fiware-ServicePathはFiware-Serviceと併用して使うこともできます。
 
 # 1-6 コンテナの停止・削除
-起動したmongodbとorionのコンテナを停止・削除します。
+起動したコンテナを停止・削除します。
 
 1. 以下コマンドでコンテナを停止・削除します。
 

@@ -2,7 +2,7 @@
 
 # 4-1 Entityの削除
 
-1. **/v2/entities/{id}** に対してDELETEメソッドを使うことで指定したEntityを削除することができます。
+1. `/v2/entities/{id}`に対してDELETEメソッドを使うことで指定したEntityを削除することができます。
 
    `curl localhost:1026/v2/entities/Room2 -X DELETE`
 
@@ -12,7 +12,7 @@
 
 ## 4-2 Attributeの削除
 
-1. **/v2/entities/{id}/attrs/{attrName}** に対してDELETEメソッドを使うことで指定したEntityを削除することができます。
+1. `/v2/entities/{id}/attrs/{attrName}`に対してDELETEメソッドを使うことで指定したEntityを削除することができます。
 
    `curl localhost:1026/v2/entities/Room1/attrs/pressure -X DELETE`
 
@@ -21,7 +21,7 @@
    `curl localhost:1026/v2/entities | jq`
 
 # 4-3 コンテナの停止・削除
-起動したmongodbとorionのコンテナを停止・削除します。
+起動したコンテナを停止・削除します。
 
 1. 以下コマンドでコンテナを停止・削除します。
 

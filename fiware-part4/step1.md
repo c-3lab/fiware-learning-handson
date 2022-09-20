@@ -4,7 +4,7 @@ Part4ではFIWARE Cygnusによる履歴データの作成について学習し�
 
 ![Cygnus概要](./assets/4-0.png)
 
-# 1-1 環境の起動
+# 1-1 構成の起動
 
 今回は以下の構成を起動します。
 
@@ -35,8 +35,8 @@ Part4ではFIWARE Cygnusによる履歴データの作成について学習し�
 
 Cygnusに履歴データを作成する方法はOrionからのSubscriptionによる通知で実現します。
 
-以下のSubscription設定でcygnusの **/notify**へ通知するように設定します。  
-**/notify**はOrionからのSubscription通知を受けて履歴ビューを作成してくれるエンドポイントになります。
+以下のSubscription設定でcygnusの`/notify`へ通知するように設定します。  
+`/notify`はOrionからのSubscription通知を受けて履歴ビューを作成してくれるエンドポイントになります。
 
 ```json
 curl -v localhost:1026/v2/subscriptions -s -S -H 'Content-Type: application/json' -X POST -d @- <<EOF

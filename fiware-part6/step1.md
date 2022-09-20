@@ -4,7 +4,7 @@ Part6ではFIWARE OrionのRegistration機能について学習していきます
 
 ![Orionの概要](./assets/6-1.png)
 
-# 1-1 FIWARE OrionとMongoDBの起動確認
+# 1-1 構成の起動
 
 今回は以下の構成を起動します。
 
@@ -22,7 +22,7 @@ docker-compose -f fiware-part6/assets/docker-compose.yml up -d
 docker ps
 ```
 
-一覧にorionとmongodbがあれば成功です。
+一覧に**fiware-orionA**, **fiware-orionB**, **mongo-dbA**, **mongo-dbB**があれば成功です。
 
 以下の手順でデータを登録します。
 
@@ -56,13 +56,13 @@ RegistrationをOrionAに設定し、Registrationの対象にしたEntityへク�
 
 ![通信の流れ](./assets/6-6.png)
 
-**/v2/registration**  
+`/v2/registration`  
 OrionAに対して、Registrationの設定を行います。
 
-**/v2/entities**  
+`/v2/entities`  
 OrionAに対して、クエリを実行します。
 
-**/v2/op/query**  
+`/v2/op/query`  
 OrionAからOrionBにクエリが転送されます。
 
 # 1-3 FIWARE OrionのRegistration機能
@@ -75,7 +75,7 @@ FIWARE Orionにはクエリ/更新要求を転送する機能があります。�
 - 外部サービスが保持するデータから常に最新のデータを取得することができます
 - データ構造などは転送先で管理されるため、転送元のOrionが保持するデータの管理コストを軽減することができます
 
-**/v2/registrations** へPOSTすることで転送の設定ができます。
+`/v2/registrations`へPOSTすることで転送の設定ができます。
 
 POSTする際のbodyは以下の通りです。
 
