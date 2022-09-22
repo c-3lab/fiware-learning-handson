@@ -4,7 +4,7 @@ Part7ではFIWARE Orionのログ設定について学習していきます。
 
 ![Orionの概要](./assets/7-1.png)
 
-# 1-1 環境の起動
+# 1-1 構成の起動
 
 今回は以下の構成を起動します。
 
@@ -22,13 +22,13 @@ docker-compose -f fiware-part7/assets/docker-compose.yml up -d
 docker ps
 ```
 
-一覧に**orion**と**mongodb**と**cygnus**と**postgresql**があれば成功です。
+一覧に**fiware-orion**, **db-mongo**, **fiware-cygnus**, **db-postgres**があれば成功です。
 
 # 1-2 ログの出力先
 
-デフォルトのログファイルの出力先は **/tmp/contextBroker.log** です。
+デフォルトのログファイルの出力先は`/tmp/contextBroker.log`です。
 
-ログファイルが保存されているディレクトリ(デフォルトでは **/tmp**)は、**-logDir**コマンドライン引数を使用して変更することができます。
+ログファイルが保存されているディレクトリ(デフォルトでは`/tmp`)は、**-logDir**コマンドライン引数を使用して変更することができます。
 
 ただし、Dockerを用いてOrion([fiware/orion](https://hub.docker.com/r/fiware/orion))を起動している場合、Dockerのベストプラクティスに従ってログは標準出力に出力され、ファイルには出力されません。
 
@@ -88,7 +88,7 @@ docker logs fiware-orion
 
 ![データ投入時のログ](./assets/7-4.png)
 
-/v2/entitiesへのPOSTリクエストを受信したことがログに記録されています。  
+`/v2/entities`へのPOSTリクエストを受信したことがログに記録されています。  
 また、request payloadには受信したデータが記録されており、response codeとしてAPIの返したステータスコードが記録されています。
 
 # 1-5 Orionが通知(Subscription)を送信する際のログ
@@ -138,7 +138,7 @@ docker logs fiware-orion
 
 ![Cygnusへの通知(Notification)時のログ](./assets/7-5.png)
 
-cygnus:5055/notifyへのPOSTリクエストを送信したことがログに記録されています。  
+`cygnus:5055/notify`へのPOSTリクエストを送信したことがログに記録されています。  
 また、response codeとして通知先が返したステータスコードが記録されています。
 
 # 1-6 コマンドライン引数で設定できるログ設定
@@ -156,7 +156,7 @@ cygnus:5055/notifyへのPOSTリクエストを送信したことがログに記�
 
 # 1-7 コンテナの停止・削除
 
-起動したmongodbとorionのコンテナを停止・削除します。
+起動したコンテナを停止・削除します。
 
 1. 以下コマンドでコンテナを停止・削除します。
 

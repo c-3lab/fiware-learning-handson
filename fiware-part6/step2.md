@@ -3,7 +3,7 @@
 Orion Registrationにおける様々な設定に関して学習していきます。
 
 # 2-1 Registrationの削除
-Orionには**PATCH /v2/registration/<id>** は実装されていないため、Registrationを直接更新することはできません。更新する場合はRegistrationを削除して再作成する必要があります。
+Orionには`PATCH /v2/registration/<id>`は実装されていないため、Registrationを直接更新することはできません。更新する場合はRegistrationを削除して再作成する必要があります。
 
 以下の手順で、Registrationを削除します。
 
@@ -15,9 +15,11 @@ curl localhost:1026/v2/registrations | jq
 2. 環境変数にRegistrationのidを設定します。  
 以下のコマンドの = 以降に先ほど取得したRegistrationのidをコピー&ペーストして実行します。  
 
-`REGISTRATION_ID=`
+```
+REGISTRATION_ID=取得したRegistrationのid
+```
 
-このidを使用し **/v2/registrations/{id}** のように指定することで、DELETEで削除を行うことができます。
+このidを使用し`/v2/registrations/{id}`のように指定することで、DELETEで削除を行うことができます。
 
 3. 以下のコマンドを実行し、Registrationを削除します。  
 
@@ -31,7 +33,7 @@ idPatternは正規表現を使用しマッチしたEntityを対象とするこ�
 
 ![idPattern](./assets/6-5.png)
 
-今回の例では".\*"を指定することで全てのidを対象にしています。
+今回の例では`".*"`を指定することで全てのidを対象にしています。
 
 # 2-3 Registrationの設定前の確認
 
@@ -85,7 +87,7 @@ Registrationsに関する情報は公式の[Registration Operations](https://git
 
 # 2-6 コンテナの停止・削除
 
-起動したmongodbとorionのコンテナを停止・削除します。
+起動したコンテナを停止・削除します。
 
 1. 以下コマンドでコンテナを停止・削除します。
 

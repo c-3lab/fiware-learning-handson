@@ -4,13 +4,13 @@
 
 # 3-1 idを指定したEntityの取得
 
-**/v2/entities/{id}** を使用して特定のEntityを取得することもできます。
+`/v2/entities/{id}`を使用して特定のEntityを取得することもできます。
 
 `curl localhost:1026/v2/entities/Room1 | jq`
 
 # 3-2 typeを指定したEntityの取得
 
-**/v2/entities**を使用して特定のEntityを取得することもできます。
+`/v2/entities`を使用して特定のEntityを取得することもできます。
 
 `curl localhost:1026/v2/entities?type=Room | jq`
 
@@ -32,17 +32,17 @@ attrsを指定することで取得するattributeの指定と順序を指定す
 
 # 3-5 attributeの取得
 
-**/v2/entities/{id}/attrs/** を使用してattributeのみを取得することができます。
+`/v2/entities/{id}/attrs/`を使用してattributeのみを取得することができます。
 
 `curl localhost:1026/v2/entities/Room1/attrs/ | jq`
 
-**/v2/entities/{id}/attrs/{attrsName}** を使用することによって単一のattributeを取得することもできます。
+`/v2/entities/{id}/attrs/{attrsName}`を使用することによって単一のattributeを取得することもできます。
 
 `curl localhost:1026/v2/entities/Room1/attrs/temperature | jq`
 
 # 3-6 attribute valueの取得
 
-**/v2/entities/{id}/attrs/{attrsName}/value**で指定したattributeのvalueのみを取得することもできます。
+`/v2/entities/{id}/attrs/{attrsName}/value`で指定したattributeのvalueのみを取得することもできます。
 
 `curl localhost:1026/v2/entities/Room1/attrs/temperature/value`
 

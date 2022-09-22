@@ -4,7 +4,7 @@ Part10ではFIWARE Wirecloudを利用したデータの可視化について学�
 
 ![FIWARE Wirecloudの機能](./assets/10-1.png)
 
-# 1-2 FIWARE Orion、MongoDB、FIWARE WireCloudの起動確認
+# 1-2 構成の起動
 
 今回は以下の構成を起動します。
 
@@ -22,7 +22,7 @@ docker-compose -f fiware-part10/assets/docker-compose.yml up -d
 docker ps
 ```
 
-一覧に fiware-orion, postgres-db, mongo-db, fiware-wirecloud, ngsi-proxy, elasticsearch, memcached, nginx があれば成功です。
+一覧に**fiware-orion**, **postgres-db**, **mongo-db**, **fiware-wirecloud**, **ngsi-proxy**, **elasticsearch**, **memcached**, **nginx**があれば成功です。
 
 # 1-3 FIWARE Orionへのデータ投入
 
@@ -253,13 +253,13 @@ Knowageは、BIとデータ分析のためのFIWAREコンポーネントです�
 # 1-7 コンテナの停止・削除
 起動したコンテナを停止・削除します。
 
-以下コマンドでコンテナを停止・削除します。
+1. 以下コマンドでコンテナを停止・削除します。
 
-`docker-compose -f fiware-part10/assets/docker-compose.yml down`
+   `docker-compose -f fiware-part10/assets/docker-compose.yml down`
 
-完了したら以下のコマンドでコンテナが停止・削除されていることを確認します。
+2. 完了したら以下のコマンドでコンテナが停止・削除されていることを確認します。
 
-`docker ps -a`
+   `docker ps -a`
 
 一覧に何も表示されていなければ成功です。
 
