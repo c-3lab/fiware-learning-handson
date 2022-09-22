@@ -69,8 +69,6 @@ OrionAからOrionBにクエリが転送されます。
 
 FIWARE Orionにはクエリ/更新要求を転送する機能があります。転送の設定を行うことで、FIWARE Orionから別のシステム（別のNGSIに対応したシステム）で提供されるコンテキストデータを取得することができます。
 
-
-
 転送が必要な大きな理由としては、以下のような点が考えられます。
 - 外部サービスが保持するデータから常に最新のデータを取得することができます
 - データ構造などは転送先で管理されるため、転送元のOrionが保持するデータの管理コストを軽減することができます
@@ -83,53 +81,5 @@ POSTする際のbodyは以下の通りです。
 
 この例では**OrionA**が**Room1**の**pressure**に対するクエリ/更新要求を受け付けた際に、
 **OrionB**にクエリ/更新要求を転送する設定です。
-
-# 1-4 Registrationの設定前の確認
-
-OrionAに対して、以下のコマンドを実行し、データが取得できないことを確認します。
-
-```
-curl localhost:1026/v2/entities/Room1/attrs/pressure?type=Room -s -S -H 'Accept: application/json' | jq
-```
-
-# 1-5 Registrationの設定
-
-以下のコマンドでOrionAに対して、Registrationの設定を行います。
-
-```json
-curl localhost:1026/v2/registrations -s -S -H 'Content-Type: application/json' -H 'Accept: application/json' -X POST -d @- <<EOF
-{
-  "description": "A registration to get info about pressure of Room1 from OrionB",
-  "dataProvided": {
-    "entities": [
-      {
-        "id": "Room1",
-        "type": "Room"
-      }
-    ],
-    "attrs": [
-      "pressure"
-    ]
-  },
-  "provider": {
-    "http": {
-      "url": "http://orionB:1027/v2"
-    }
-  }
-}
-EOF
-```
-
-# 1-6 OrionAからOrionBへの転送
-
-Registrationの設定完了後に、OrionAに対して、以下のコマンドを再度実行します。
-
-```
-curl localhost:1026/v2/entities/Room1/attrs/pressure?type=Room -s -S -H 'Accept: application/json' | jq
-```
-
-クエリがOrionBに転送され、データが取得されることを確認します。
-
-![ResponseBody](./assets/6-4.png)
 
 [STEP2へ](step2.md)
