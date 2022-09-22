@@ -8,7 +8,7 @@ services:
       - mongo-db
     ports:
       - "1026:1026"
-    command: -dbhost mongo-db
+    entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -ngsiv1Autocast -disableFileLog -dbhost mongo-db"]
 
   mongo-db:
     image: mongo:4.4

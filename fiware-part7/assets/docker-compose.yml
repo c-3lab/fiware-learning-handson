@@ -10,7 +10,7 @@ services:
       - mongo-db
     ports:
       - "1026:1026"
-    command: -dbhost mongo-db -logLevel DEBUG -noCache
+    entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -ngsiv1Autocast -disableFileLog -dbhost mongo-db -logLevel DEBUG -noCache"]
 
   # Cygnus is configured to write context data to PostgeSQL
   cygnus:
