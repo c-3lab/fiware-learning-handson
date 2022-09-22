@@ -21,13 +21,13 @@ Part9ではFIWAREコンポーネントのアクセス保護について学習し
 以下のコマンドを実行します。
 
 ```
-docker-compose -f fiware-part9/assets/docker-compose.yml up -d
+docker compose -f fiware-part9/assets/docker-compose.yml up -d
 ```
 
 ターミナルの処理が終了したら以下のコマンドで起動していることを確認します。
 
 ```
-docker ps
+docker compose -f fiware-part9/assets/docker-compose.yml ps
 ```
 
 一覧に**fiware-orion-proxy**, **fiware-orion**, **fiware-keyrock**, **db-mongo**, **db-mysql**があれば成功です。

@@ -13,13 +13,13 @@ Part10ではFIWARE Wirecloudを利用したデータの可視化について学�
 以下のコマンドを実行します。
 
 ```
-docker-compose -f fiware-part10/assets/docker-compose.yml up -d
+docker compose -f fiware-part10/assets/docker-compose.yml up -d
 ```
 
 ターミナルの処理が終了したら以下のコマンドで起動していることを確認します。
 
 ```
-docker ps
+docker compose -f fiware-part10/assets/docker-compose.yml ps
 ```
 
 一覧に**fiware-orion**, **postgres-db**, **mongo-db**, **fiware-wirecloud**, **ngsi-proxy**, **elasticsearch**, **memcached**, **nginx**があれば成功です。
@@ -63,7 +63,7 @@ curl localhost:1026/v2/entities | jq
 以下のコマンドを実行し、WireCloud用のスーパーユーザを作成します。
 
 ```
-docker-compose -f fiware-part10/assets/docker-compose.yml exec wirecloud python manage.py createsuperuser
+docker compose -f fiware-part10/assets/docker-compose.yml exec wirecloud python manage.py createsuperuser
 ```
 
 スーパーユーザの情報を対話形式で入力します。

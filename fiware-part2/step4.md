@@ -25,11 +25,11 @@
 
 1. 以下コマンドでコンテナを停止・削除します。
 
-   `docker-compose -f fiware-part2/assets/docker-compose.yml down`
+   `docker compose -f fiware-part2/assets/docker-compose.yml down`
 
 2. 完了したら以下のコマンドでコンテナが停止・削除されていることを確認します。
 
-   `docker ps -a`
+   `docker compose -f fiware-part2/assets/docker-compose.yml ps -a`
 
    一覧に何も表示されていなければ成功です。
 

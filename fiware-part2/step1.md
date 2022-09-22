@@ -11,19 +11,19 @@ Part2ではFIWARE Orionのデータ操作における基本的な操作を学習
 ![全体構成図](./assets/1-1.png)
 
 
-今回はdocker-composeを使い、FIWARE OrionとMongoDBの起動を同時に行います。  
-※今回はFIWAREの学習がメインなので[docker-compose](https://docs.docker.jp/compose/toc.html)の説明については割愛します。
+今回はdocker composeを使い、FIWARE OrionとMongoDBの起動を同時に行います。  
+※今回はFIWAREの学習がメインなので[docker compose](https://docs.docker.jp/compose/toc.html)の説明については割愛します。
 
 以下のコマンドを実行します。
 
 ```
-docker-compose -f fiware-part2/assets/docker-compose.yml up -d
+docker compose -f fiware-part2/assets/docker-compose.yml up -d
 ```
 
 ターミナルの処理が終了したら以下のコマンドで起動していることを確認します。
 
 ```
-docker ps
+docker compose -f fiware-part2/assets/docker-compose.yml ps
 ```
 
 一覧に**fiware-orion**と**mongo-db**があれば成功です。

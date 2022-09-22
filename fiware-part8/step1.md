@@ -13,13 +13,13 @@ part8ではIoTAgentを使ったデバイスからのデータ収集について�
 以下のコマンドを実行します。
 
 ```
-docker-compose -f fiware-part8/assets/docker-compose.yml up -d
+docker compose -f fiware-part8/assets/docker-compose.yml up -d
 ```
 
 ターミナルの処理が終了したら以下のコマンドで起動していることを確認します。
 
 ```
-docker ps
+docker compose -f fiware-part8/assets/docker-compose.yml ps
 ```
 
 一覧に**fiware-orion**, **db-mongo**, **fiware-iot-agent**, **dummy-device**があれば成功です。
