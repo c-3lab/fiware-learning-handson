@@ -52,6 +52,8 @@ GitHub Codespacesを利用して学習を行うためには、以下の[有料�
 
 ![GitHub Codespaces](./assets/github1-10.png)
 
+# GitHub Codespacesを利用しない場合
+
 GitHub Codespacesを利用しない場合は、以下条件を満たすことで無償で学習を行うことができます。
 1. docker、docker compose、curl、git などが使える環境を用意する
 2. 上記の環境に本リポジトリをクローンする
