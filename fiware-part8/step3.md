@@ -145,7 +145,7 @@ curl -iX POST \
 
 # 3-2 仮想IoTDevice004の動作確認
 
-1-8でIoTAgentに登録した仮想IoTDevice004が正常に動作することを確認します。
+3-1でIoTAgentに登録した仮想IoTDevice004が正常に動作することを確認します。
 
 画面に表示されている店舗の内、`urn:ngsi-ld:Store:004`を確認します。左下のプルダウンから`Lamp On`を選択し、**Sendボタン**をクリックします。
 
@@ -157,7 +157,7 @@ curl -iX POST \
 
 # 3-3 デバイスからの通信内容
 
-1-9で画面から操作した際にはデバイスからIoTAgentにリクエストが送られていました。この項では、手動でIoTAgentにリクエストを送ることで、デバイスからの通信内容を確認します。
+3-2で画面から操作した際にはデバイスからIoTAgentにリクエストが送られていました。この項では、手動でIoTAgentにリクエストを送ることで、デバイスからの通信内容を確認します。
 
 以下の手順で、IoTAgentに直接コマンドを実行することで、仮想IoTDevice004からIoTAgentに送られている通信内容を確認します。
 
@@ -178,7 +178,7 @@ curl -X GET 'http://localhost:1026/v2/entities/urn:ngsi-ld:Lamp:004/attrs?attrs=
 
 ![lamp004 result](./assets/8-11.png)
 
-1-8で行ったデバイス登録により、実行コマンドの`s`が`state`にマッピングされています。今回は`Ultralight2.0`を使用しており、`state`が`s`になることにより、デバイスとIoTAgentとの間のデータ通信量を少なくできます。
+3-1で行ったデバイス登録により、実行コマンドの`s`が`state`にマッピングされています。今回は`Ultralight2.0`を使用しており、`state`が`s`になることにより、デバイスとIoTAgentとの間のデータ通信量を少なくできます。
 
 ※IoTAgentに対して定期的に仮想IoTDeviceの現在の状態が送信されるため、コマンド実行直後は`state`の`value`が`OFF`になっていますが、一定時間経過後は`ON`に更新されます
 
