@@ -13,13 +13,13 @@ Part6ではFIWARE OrionのRegistration機能について学習していきます
 以下のコマンドを実行します。
 
 ```
-docker-compose -f fiware-part6/assets/docker-compose.yml up -d
+docker compose -f fiware-part6/assets/docker-compose.yml up -d
 ```
 
 実行が完了したら起動していることを確認します。
 
 ```
-docker ps
+docker compose -f fiware-part6/assets/docker-compose.yml ps
 ```
 
 一覧に**fiware-orionA**, **fiware-orionB**, **mongo-dbA**, **mongo-dbB**があれば成功です。

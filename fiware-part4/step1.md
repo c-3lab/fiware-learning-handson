@@ -11,8 +11,8 @@ Part4ではFIWARE Cygnusによる履歴データの作成について学習し�
 ![全体構成図](./assets/4-1.png)
 
 
-今回はdocker-composeにより以下の内容が構築されます。
-※今回はFIWAREの学習がメインなので[docker-compose](https://docs.docker.jp/compose/toc.html)の説明については割愛します。
+今回はdocker composeにより以下の内容が構築されます。
+※今回はFIWAREの学習がメインなので[docker compose](https://docs.docker.jp/compose/toc.html)の説明については割愛します。
 
 * FIWARE Orion
 * MongoDB
@@ -23,7 +23,7 @@ Part4ではFIWARE Cygnusによる履歴データの作成について学習し�
 
 `./fiware-part4/setup.sh `
 
-以下のコマンドでdocker-composeで起動された内容を確認します。
+以下のコマンドでdocker composeで起動された内容を確認します。
 
 `cat fiware-part4/assets/docker-compose.yml`
 

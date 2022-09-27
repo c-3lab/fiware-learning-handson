@@ -7,8 +7,8 @@ Part5ではFiware-ServiceとFiware-ServicePathについて学習します。
 ![全体構成図](./assets/1-1.png)
 
 
-今回はdocker-composeにより以下の内容が構築されます。
-※今回はFIWAREの学習がメインなので[docker-compose](https://docs.docker.jp/compose/toc.html)の説明については割愛します。
+今回はdocker composeにより以下の内容が構築されます。
+※今回はFIWAREの学習がメインなので[docker compose](https://docs.docker.jp/compose/toc.html)の説明については割愛します。
 
 * FIWARE Orion
 * MongoDB
