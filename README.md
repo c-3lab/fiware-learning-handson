@@ -4,6 +4,10 @@
 
 シビックハッカーがFIWAREコンポーネントの機能を、ハンズオン形式で学習していくためのコンテンツです。
 
+FIWARE Orionの機能を中心に、履歴データの作成、IoTDeviceからのデータ収集、FIWAREコンポーネントのアクセス保護、データの可視化などの内容を学習できます。
+
+学習はGitHub Codespacesの利用を前提としています。GitHub Codespacesを利用しない場合の学習の進め方は、[GitHub Codespacesを利用しない場合](setup.md#github-codespacesを利用しない場合)を確認してください。
+
 ## 利用方法
 
 [setup.md](setup.md)に記載されている手順を確認してください。
