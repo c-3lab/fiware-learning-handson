@@ -32,11 +32,7 @@
 
 # GitHub Codespacesの利用手順
 
-GitHub Codespacesを利用して学習を行うためには、以下の[有料プラン](https://github.co.jp/pricing)に加入する必要があります。
-- GitHub Team
-- GitHub Enterprise
-
-既にGitHub Codespacesのベータ版を利用しているユーザーについては、Freeプランのまま学習を行うことができます。
+一般ユーザの場合、GithHub Codespacesには毎月60hの無料枠がありますがそれ以上は有料となりますのでご注意ください。
 
 以下の手順でGitHub Codespacesを起動します。
 
