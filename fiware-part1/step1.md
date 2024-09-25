@@ -37,7 +37,7 @@ MongoDBと同様にDockerHubに公開されているFIWARE公式のImageを使�
 
 1. 以下のコマンドでOrionを起動します。
 
-   `docker run -d --name orion --link mongodb:mongodb -p 1026:1026 fiware/orion -dbhost mongodb`
+   `docker run -d --name orion --link mongodb:mongodb -p 1026:1026 fiware/orion:3.7 -dbhost mongodb`
 
 2. 完了したら以下のコマンドで起動しているコンテナを確認します。
 
