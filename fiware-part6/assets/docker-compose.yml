@@ -2,7 +2,7 @@ version: "3"
 
 services:
   orionA:
-    image: fiware/orion
+    image: fiware/orion:3.7.0
     hostname: orionA
     container_name: fiware-orionA
     depends_on:
@@ -12,7 +12,7 @@ services:
     entrypoint: ["sh", "-c", "rm /tmp/contextBroker.pid; /usr/bin/contextBroker -fg -multiservice -ngsiv1Autocast -disableFileLog -dbhost mongo-dbA -logLevel DEBUG -noCache -port 1026"]
 
   orionB:
-    image: fiware/orion
+    image: fiware/orion:3.7.0
     hostname: orionB
     container_name: fiware-orionB
     depends_on:
